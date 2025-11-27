@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Max's Portfolio</title>
+    <link rel="stylesheet" href="Styles/PortfolioStyle.css">
+</head>
+<body>
+    <div class="hamburger" onclick="toggleSidebar()">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+
+    <div class="layout" id="layout">
+        <div class="sidebar" id="sidebar">
+            <h2>Menu</h2>
+            <a href="#home">Home</a>
+            <a href="#projects">Projects</a>
+            <a href="#skills">Skills</a>
+            <a href="#contact">Contact</a>
+            
+            <div class="sidebar-links">
+                <a href="https://github.com/Maxyy15" target="_blank">GitHub</a>
+                <a href="https://www.linkedin.com/in/maxwellclement/" target="_blank">LinkedIn</a>
+                <a href="" target="_blank">Resume</a>
+            </div>
+        </div>
+        
+        
+        <div class="content" id="content">
+            <header id="home">
+                <img src="Images/ProfilePic.jpg" alt="Profile Picture">
+                <h1>Maxwell Clement</h1>
+                <p>Programmer and Game Developer</p>
+                <p></p>
+            </header>
+            
+            <section id="projects" class="projects">
+                <a href="Pages/DeadPixels.html" class="project-link">
+                    <div class="project-btn">
+                        <img src="Images/Dead Pixels.png" alt="Project 1">
+                        <h3>Dead Pixels</h3>
+                        <p>A top down 2D zombie survival game made in Unreal Engine 5</p>
+                    </div>
+                </a>
+                <a href="Pages/GuitarController.html" class="project-link">
+                    <div class="project-btn">
+                        <img src="Images/GuitarController.png" alt="Project 2">
+                        <h3>Guitar Controller</h3>
+                        <p>A simple experience made in Unreal Engine 5 where each note of a guitar controls a specific aspect of the game</p>
+                    </div>
+                </a>
+            <a href="Pages/EternalWorlds.html" class="project-link">
+                <div class="project-btn">
+                    <img src="images/Test.png" alt="Project 3">
+                    <h3>Eternal Worlds</h3>
+                    <p>A first person roguelite made in Unreal Engine 5 where you walk around randomly generated levels fighting enemies</p>
+                </div>
+            </a>
+            <a href="Pages/AudioVisualizer.html" class="project-link">
+                <div class="project-btn">
+                    <img src="Images/AudioVisualizer.png" alt="Project 4">
+                    <h3>Audio Vizualizer</h3>
+                    <p>An audio visualizer project made with C++ in OpenFrameworks</p>
+                </div>
+            </a>
+            <a href="Pages/AudioVisualizerMK2.html" class="project-link">
+                <div class="project-btn">
+                    <img src="Images/2ndAudioVIsualizer.png" alt="Project 5">
+                    <h3>Audio Vizualizer Mk.2</h3>
+                    <p>Another audio visualizer project made with C++ and OpenGL</p>
+                </div>
+            </a>
+            </section>
+            <section id="skills" class="skills">
+                <h2>Skills</h2>
+                <div class="skills-list">
+                <div class="skill">C#</div>
+                <div class="skill">C++</div>
+                <div class="skill">Unity</div>
+                <div class="skill">Unreal Engine 5</div>
+                <div class="skill">OpenFrameworks</div>
+                <div class="skill">HTML</div>
+            </section>
+            <section id="contact">
+                <footer class="footer-links">
+                    <a href="https://github.com/Maxyy15" target="_blank">GitHub</a>
+                    <a href="https://www.linkedin.com/in/maxwellclement/" target="_blank">LinkedIn</a>
+                    <a href="" target="_blank">Resume</a>
+                </footer>
+            </section>
+        </div>
+    </div>
+    
+    <script>
+        function toggleSidebar(){
+            const sidebar = document.getElementById("sidebar");
+            sidebar.classList.toggle("open");
+        }
+    </script>
+
+
+    
+</body>
+</html>

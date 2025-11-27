@@ -1,0 +1,209 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #0a0a0a;
+  color: white;
+  overflow-x: hidden;
+}
+
+.layout {
+  display: flex;
+  width: 100%;
+  transition: 0.3s ease;
+}
+
+.content {
+  flex: 1;
+  padding: 60px 30px;
+  max-width: 100%;
+  transition: width 0.3s ease;
+}
+
+.content.shift {
+  margin-left: 200px;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+header img {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #444;
+  margin-bottom: 20px;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2.4rem;
+}
+
+header p {
+  font-size: 1.1rem;
+  color: #ccc;
+}
+
+.projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.project-btn {
+  background-color: #1a1a1a;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 15px;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.project-btn:hover {
+  background-color: #222;
+  transform: translateY(-3px);
+}
+
+.project-btn img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.project-btn h3 {
+  margin: 10px 0 5px;
+}
+
+.project-btn p {
+  font-size: 0.9rem;
+  color: #bbb;
+}
+
+.sidebar {
+  width: 0px;
+  overflow: hidden;
+  background-color: #111;
+  height: 100vh;
+  transition: width 0.3s ease;
+  border-right: 1px solid #333;
+  padding: 20px 0 20px 0px;
+  position: fixed;
+  z-index: 9;
+}
+
+.sidebar.open {
+  width: 240px;
+}
+
+.sidebar h2 {
+  margin-top: 40px;
+  padding-left: 20px;
+}
+
+.sidebar a {
+  display: block;
+  margin: 15px 0;
+  padding-left: 20px;
+  color: #ddd;
+  text-decoration: none;
+  transition: 0.3s;
+}
+.sidebar a:hover {
+  color: white;
+  padding-left: 26px;
+  transition: padding-left 0.18s ease;
+}
+
+.sidebar-links {
+  margin-top: 40px;
+  padding-top: 15px;
+  border-top: 1px solid #333;
+}
+
+.sidebar-links a {
+  display: block;
+  margin: 10px 0;
+  color: #9bdcff;
+  font-weight: bold;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.sidebar-links a:hover {
+  color: white;
+  padding-left: 26px;
+}
+
+.footer-links {
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+  color: #aaa;
+}
+
+.footer-links a {
+  margin: 0 15px;
+  color: #9bdcff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: white;
+}
+
+.hamburger {
+  position: fixed;
+  cursor: pointer;
+  z-index: 10;
+  top: 15px;
+  left: 20px;
+  width: 30px;
+  height: 24px;
+}
+
+.hamburger .bar {
+  background: white;
+  height: 4px;
+  width: 100%;
+  margin: 4px 0;
+  transition: 0.3s ease;
+}
+
+.skills {
+  margin-top: 60px;
+  padding: 30px;
+  background-color: #111;
+  border-radius: 10px;
+  border: 1px solid #333;
+}
+
+.skills h2 {
+  margin-top: 0;
+}
+
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.skill {
+  padding: 10px 15px;
+  border-radius: 8px;
+  background-color: #1c1c1c;
+  border: 1px solid #333;
+  font-size: 0.9rem;
+}
+
+.project-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
