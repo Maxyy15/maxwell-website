@@ -3,7 +3,7 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   z-index: -1;
   background: black;
   overflow: hidden;
@@ -15,6 +15,7 @@ body {
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   color: white;
   padding: 20px;
+  z-index: -1;
 }
 
 .project-container {
@@ -29,7 +30,7 @@ body {
   border-radius: 14px;
   max-width: 900px;
   margin: 40px auto;
-  
+
   color: white;
   box-shadow: 0 0 18px rgba(0, 0, 0, 0.4);
 }
