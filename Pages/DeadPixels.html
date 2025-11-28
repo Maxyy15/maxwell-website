@@ -8,6 +8,8 @@
   </head>
 
   <body>
+    <div id="matrix-bg"></div>
+
     <div class="project-container">
       <a href="../index.html" class="back-btn">← Back to Portfolio</a>
 
@@ -34,6 +36,12 @@
         <li>Pixel-style graphics</li>
       </ul>
 
+      <div class="source-code">
+        <a href="https://github.com/Chpcunningham/DeadPixels" target="_blank">
+          View Source Code →
+        </a>
+      </div>
+
       <h2>Screenshots</h2>
       <div class="screenshot-grid">
         <img src="../Images/DeadPixels1.png" />
@@ -41,5 +49,65 @@
         <img src="../Images/DeadPixels3.png" />
       </div>
     </div>
+
+    <script>
+      const colours = [
+        "#00ffea", 
+        "#ff007c", 
+        "#39ff14", 
+        "#faff00", 
+        "#7a00ff",
+      ];
+
+      const canvas = document.createElement("canvas");
+      const ctx = canvas.getContext("2d");
+      document.getElementById("matrix-bg").appendChild(canvas);
+
+      const letters = "[];/?!&*%$#@{}:<>|=+";
+      const fontSize = 16;
+
+      let columns;
+      let drops = [];
+
+      function setup() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        columns = Math.floor(canvas.width / fontSize);
+        drops = Array(columns).fill(1);
+      }
+
+      setup();
+
+      let resizeTimeout;
+      window.addEventListener("resize", () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+          setup();
+        }, 150);
+      });
+
+      function draw() {
+        ctx.fillStyle = "rgba(0, 0, 0, 0.08)";
+
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = "#00ff55";
+        ctx.font = fontSize + "px monospace";
+
+        for (let i = 0; i < drops.length; i++) {
+          ctx.fillStyle = colours[Math.floor(Math.random() * colours.length)];
+
+          const text = letters[Math.floor(Math.random() * letters.length)];
+
+          ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+          if (drops[i] * fontSize > canvas.height && Math.random() > 0.97) {
+            drops[i] = 0;
+          }
+          drops[i]++;
+        }
+      }
+      setInterval(draw, 35);
+    </script>
   </body>
 </html>

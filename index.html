@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="Styles/PortfolioStyle.css">
 </head>
 <body>
+    <div id="matrix-bg"></div>
+
     <div class="hamburger" onclick="toggleSidebar()">
         <div class="bar"></div>
         <div class="bar"></div>
@@ -24,6 +26,7 @@
             <div class="sidebar-links">
                 <a href="https://github.com/Maxyy15" target="_blank">GitHub</a>
                 <a href="https://www.linkedin.com/in/maxwellclement/" target="_blank">LinkedIn</a>
+                <a href="mailto:maxwell_clement@outlook.com">Email</a>
                 <a href="" target="_blank">Resume</a>
             </div>
         </div>
@@ -75,7 +78,7 @@
             </a>
             </section>
             <section id="skills" class="skills">
-                <h2>Skills</h2>
+                <h2>Technical Skills</h2>
                 <div class="skills-list">
                 <div class="skill">C#</div>
                 <div class="skill">C++</div>
@@ -83,11 +86,16 @@
                 <div class="skill">Unreal Engine 5</div>
                 <div class="skill">OpenFrameworks</div>
                 <div class="skill">HTML</div>
+                <div class="skill">Visual Studio</div>
+                <div class="skill">Rider</div>
+                <div class="skill">VS Code</div>
+                <div class="skill">Github</div>
             </section>
             <section id="contact">
                 <footer class="footer-links">
                     <a href="https://github.com/Maxyy15" target="_blank">GitHub</a>
                     <a href="https://www.linkedin.com/in/maxwellclement/" target="_blank">LinkedIn</a>
+                    <a href="mailto:maxwell_clement@outlook.com">Email</a>
                     <a href="" target="_blank">Resume</a>
                 </footer>
             </section>
@@ -99,6 +107,69 @@
             const sidebar = document.getElementById("sidebar");
             sidebar.classList.toggle("open");
         }
+
+        const colours = [
+
+            "#00ff55",
+            "#00ffd5",
+            "#00aaff",
+            "#a855f7",
+            "#ff66cc"
+        ];
+        
+
+        
+        const canvas = document.createElement("canvas");
+        const ctx = canvas.getContext("2d");
+        document.getElementById("matrix-bg").appendChild(canvas);
+        
+        const letters = "[];/?!&*%$#@{}:<>|=+";
+        const fontSize = 16;
+        //const columns = canvas.width / fontSize;
+       // const drops = Array(Math.floor(columns)).fill(1);
+
+       let columns;
+       let drops = [];
+
+        function setup() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            columns = Math.floor(canvas.width / fontSize);
+            drops = Array(columns).fill(1);
+        }
+
+        setup();
+
+        let resizeTimeout;
+        window.addEventListener("resize", () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                setup();
+            }, 150);
+        });
+        
+        function draw() {
+            ctx.fillStyle = "rgba(0, 0, 0, 0.08)";
+            
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = "#00ff55";
+            ctx.font = fontSize + "px monospace";
+
+            for (let i = 0; i < drops.length; i++) {
+                ctx.fillStyle = colours[Math.floor(Math.random() * colours.length)];
+
+                const text = letters[Math.floor(Math.random() * letters.length)];
+
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.97) {
+                    drops[i] = 0;
+                }
+                drops[i]++;
+            }
+        }
+        setInterval(draw, 35);
     </script>
 
 

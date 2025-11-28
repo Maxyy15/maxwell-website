@@ -8,6 +8,8 @@
   </head>
 
   <body>
+    <div id="matrix-bg"></div>
+
     <div class="project-container">
       <a href="../index.html" class="back-btn">← Back to Portfolio</a>
 
@@ -21,9 +23,8 @@
 
       <p class="description">
         Eternal Worlds is a First Person Action Rougelite where you travel
-        through a randomly generated dungeon and kill skeletons. 
-        
-        The game is unfinished but the idea behind it was once you decended far enough you
+        through a randomly generated dungeon and kill skeletons. The game is
+        unfinished but the idea behind it was once you decended far enough you
         would fight the final boss and enter into another world with a
         completely different style.
       </p>
@@ -37,10 +38,69 @@
 
       <h2>Screenshots</h2>
       <div class="screenshot-grid">
-        <img src="../Images/DeadPixelsShot1.png" />
-        <img src="../Images/DeadPixelsShot2.png" />
-        <img src="../Images/DeadPixelsShot3.png" />
+        <img src="../Images/EternalWorlds1.png" />
+        <img src="../Images/EternalWorlds2.png" />
+        <img src="../Images/EternalWorlds3.png" />
       </div>
     </div>
+
+    <script>
+      const colours = [
+        "#a7c7ff", 
+        "#4da6ff",
+        "#005eff", 
+        "#c4c4c4",
+        "#8da0ff",
+      ];
+
+      const canvas = document.createElement("canvas");
+      const ctx = canvas.getContext("2d");
+      document.getElementById("matrix-bg").appendChild(canvas);
+
+      const letters = "[];/?!&*%$#@{}:<>|=+";
+      const fontSize = 16;
+      let columns;
+      let drops = [];
+
+      function setup() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        columns = Math.floor(canvas.width / fontSize);
+        drops = Array(columns).fill(1);
+      }
+
+      setup();
+
+      let resizeTimeout;
+      window.addEventListener("resize", () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+          setup();
+        }, 150);
+      });
+
+      function draw() {
+        ctx.fillStyle = "rgba(0, 0, 0, 0.08)";
+
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = "#00ff55";
+        ctx.font = fontSize + "px monospace";
+
+        for (let i = 0; i < drops.length; i++) {
+          ctx.fillStyle = colours[Math.floor(Math.random() * colours.length)];
+
+          const text = letters[Math.floor(Math.random() * letters.length)];
+
+          ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+          if (drops[i] * fontSize > canvas.height && Math.random() > 0.97) {
+            drops[i] = 0;
+          }
+          drops[i]++;
+        }
+      }
+      setInterval(draw, 35);
+    </script>
   </body>
 </html>
